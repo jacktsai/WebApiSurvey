@@ -1,0 +1,135 @@
+﻿<script src="~/Scripts/jquery-1.7.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function get(id)
+    {
+        var uri = '/api/values/get';
+        
+        if ( id != undefined )
+        {
+            uri = uri + '?id=' + id;
+        }
+        
+        $.ajax({
+            url: uri,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data, status, jqXHR) {
+                window.alert(data);
+            },
+            error: function(jqXHR, status, error) {
+                window.alert(error);
+            }
+        });
+    }
+
+    function post()
+    {
+        $.ajax({
+            url: '/api/values/post',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify('this is a string !!'),
+            dataType: 'json',
+            success: function(data, status, jqXHR) {
+                window.alert(data);
+            },
+            error: function(jqXHR, status, error) {
+                window.alert(error);
+            }
+        });
+    }
+
+    function put()
+    {
+        $.ajax({
+            url: '/api/values/put?id=5',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify('this is a string !!'),
+            dataType: 'json',
+            success: function(data, status, jqXHR) {
+                window.alert(data);
+            },
+            error: function(jqXHR, status, error) {
+                window.alert(error);
+            }
+        });
+    }
+
+    function _delete()
+    {
+        $.ajax({
+            url: '/api/values/delete?id=6',
+            type: 'DELETE',
+            dataType: 'json',
+            success: function(data, status, jqXHR) {
+                window.alert(data);
+            },
+            error: function(jqXHR, status, error) {
+                window.alert(error);
+            }
+        });
+    }
+
+    function getWithContent()
+    {
+        var obj =
+        {
+            str: 'this is a string !!',
+            int: 12345,
+            float: 123.45
+        };
+
+//        $.ajax({
+//            url: '/api/values/GetWithContent',
+//            type: 'GET',
+//            //contentType: 'application/json',
+//            data: obj,
+//            //data: 'this is a string !!',
+//            dataType: 'json',
+//            success: function(data, status, jqXHR) {
+//                window.alert('str=' + data.str + ', int=' + data.int + ', float=' + data.float);
+//            },
+//            error: function(jqXHR, status, error) {
+//                window.alert(error);
+//            }
+//        });
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/api/values/GetWithContent', false);
+        xhr.send(JSON.stringify(obj));
+    }
+
+    function postAnyObject()
+    {
+        var obj =
+        {
+            str: 'this is a string !!',
+            int: 12345,
+            float: 123.45
+        };
+
+        $.ajax({
+            url: '/api/values/PostAnyObject',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(obj),
+            dataType: 'json',
+            success: function(data, status, jqXHR) {
+                window.alert('str=' + data.str + ', int=' + data.int + ', float=' + data.float);
+            },
+            error: function(jqXHR, status, error) {
+                window.alert(error);
+            }
+        });
+    }
+</script>
+<div>
+    <input type="button" value='Get values' onclick="get();" />
+    <input type="button" value='Get values by ID' onclick="get(3);" />
+    <input type="button" value='Post' onclick="post();" />
+    <input type="button" value='Put' onclick="put();" />
+    <input type="button" value='Delete' onclick="_delete();" />
+    <input type="button" value='Get with a content' onclick="getWithContent();" />
+    <input type="button" value='Post with any object' onclick="postAnyObject();" />
+</div>

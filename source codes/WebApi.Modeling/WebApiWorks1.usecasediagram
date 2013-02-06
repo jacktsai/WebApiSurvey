@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="0275f9d0-8976-4a9e-b8f4-ebd60e82c4e3" name="WebApiWorks1" linkedPackageId="13497d12-82d8-474a-a6cb-13d5af1d8b57" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="895ea20e-c375-48fc-9c95-acc6107c9456">
+      <profileInstance Id="41078e39-eecd-40e0-a4cb-e8b472a9ef66" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a31814ef-91c9-4d56-8bb3-92c6b091d06f">
+      <profileInstance Id="84ca47b2-5c7c-4c71-8704-ec28fae25b0e" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="8abb764d-f516-4b17-8990-f25d7d4710a4" name="ASP.NET" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="98fadcd9-dccc-4a79-9d26-f012a2445b64" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="7508c51b-1e6b-49da-bd9c-f06d99286694" name="Web API Consumer" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f476b99f-1382-44d5-a8b0-c9228fab1fc0" />
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="13497d12-82d8-474a-a6cb-13d5af1d8b57" name="WebApi.Modeling">
+    <elementDefinition Id="b3983bd9-29fe-4760-ac4d-6e6bfc039a21" />
+  </package>
+</useCaseModelRoot>

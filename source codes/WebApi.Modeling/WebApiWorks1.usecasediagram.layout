@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WebApiWorks1">
+  <useCaseModelRootMoniker Id="0275f9d0-8976-4a9e-b8f4-ebd60e82c4e3" />
+  <nestedChildShapes>
+    <actorShape Id="f75bc5ba-f6ab-4c5d-9b19-83d446cbee21" absoluteBounds="0.625, 0.875, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="7508c51b-1e6b-49da-bd9c-f06d99286694" LastKnownName="Web API Consumer" />
+      <relativeChildShapes />
+    </actorShape>
+    <SubsystemShape Id="7fac0788-1d5e-457e-a528-dec522901528" absoluteBounds="1.875, 2, 3, 2.5" customColor="White">
+      <subsystemMoniker Id="8abb764d-f516-4b17-8990-f25d7d4710a4" LastKnownName="ASP.NET" />
+    </SubsystemShape>
+  </nestedChildShapes>
+</useCaseDiagram>

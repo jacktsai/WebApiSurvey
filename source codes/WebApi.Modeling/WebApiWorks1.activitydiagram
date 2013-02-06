@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="fbfcfc76-0a9e-4138-a7ab-b4206a350d4f" name="WebApiWorks1" linkedPackageId="00936069-5569-4131-91a5-d497751db4b7" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="4b4af645-c9e0-44ee-bbc2-18ed249fcd45">
+      <profileInstance Id="3cadfd36-1032-4a1a-be21-6c68287cdfdb" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="25eb8b39-bbe6-4f6b-9016-1c40d7c5be93">
+      <profileInstance Id="5ec6c1b8-35e3-4dfa-aa53-e0b758ae1792" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="345debde-6373-4bab-91df-e9994750f0a4" name="WebApiWorks1" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="7d33dc9b-f997-426c-8bab-d7ac248e4b77" />
+        <nodes>
+          <initialNode Id="f4b12757-1512-46a0-84b1-85e813e5e920" name="Initial1" isLeaf="false">
+            <elementDefinition Id="ae0f48a7-4a19-48ae-9137-af094e5f46b7" />
+            <flowNodeTargets>
+              <controlFlow Id="eeade6c3-e2b8-4f1a-88be-42b069db1ff0" isLeaf="false">
+                <sendSignalActionMoniker Id="cd4d571d-2a06-47a2-9dbe-7b65900d6354" LastKnownName="send HTTP request" />
+                <elementDefinition Id="e02426b8-9696-43d6-a754-6050d88d907f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <objectNode Id="463411a1-6403-4d29-9c04-62e0e39ed6bf" name="ASP.NET" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="a6b45f60-4f13-474b-8276-a0f2267dcd2d" />
+            <upperBound>
+              <literalInteger Id="d512fd01-07a1-44b5-aa63-0e2ace24acb8" name="2147483647" value="2147483647">
+                <elementDefinition Id="c84a34ee-58c8-4639-a26f-f858ce5510ef" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+          <sendSignalAction Id="cd4d571d-2a06-47a2-9dbe-7b65900d6354" name="send HTTP request" isLeaf="false">
+            <elementDefinition Id="3c890e86-1be2-415d-806e-9e12460c9424" />
+            <objectFlowTargets>
+              <objectFlow Id="4b1ce773-ef50-42d8-bd99-42aefb6e3fc1" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <objectNodeMoniker Id="463411a1-6403-4d29-9c04-62e0e39ed6bf" LastKnownName="ASP.NET" />
+                <elementDefinition Id="9eb852ca-f004-4428-a393-12a150138ef8" />
+              </objectFlow>
+            </objectFlowTargets>
+          </sendSignalAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="00936069-5569-4131-91a5-d497751db4b7" name="WebApi.Modeling">
+    <elementDefinition Id="b3983bd9-29fe-4760-ac4d-6e6bfc039a21" />
+  </package>
+</activityRootModel>

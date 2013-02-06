@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="2ce6c59b-a85e-45e3-90f1-7c929745c010" name="WebApiWorks1" linkedPackageId="6c666eb2-1d03-4b32-a96e-95cc55d6302c" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="804b2a3e-f77a-4e88-9126-e49ba9b76d29">
+      <profileInstance Id="d9e91ac9-f3cd-44f7-9072-767405648c7e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="76f14b5e-2216-4e8b-904e-a4d534555b8f">
+      <profileInstance Id="431ddc66-440b-4ea9-9618-df7ecb3ae813" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="86e9c0f0-755f-4ebf-926e-345e2682a597" name="WebApiWorks1" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <elementDefinition Id="d95caa62-085e-4404-929a-ebfece4af90c" />
+        <lifelines>
+          <lifeline Id="72c48b0f-8996-485c-8bcd-30ae4c285961" name="Web API Consumer" isActor="true" lifelineDisplayName="Web API Consumer">
+            <elementDefinition Id="af81a39f-35b7-40cf-98d1-c92e5eabe5f0" />
+            <represents>
+              <propertyMoniker Id="2c408e63-07d1-434b-a46e-4b127baa0246" />
+            </represents>
+          </lifeline>
+        </lifelines>
+        <ownedAttributesInternal>
+          <property Id="2c408e63-07d1-434b-a46e-4b127baa0246" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7affe374-cc74-4db9-b834-07d32b2ff5a5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="38699b99-f047-4ccf-ab75-ae545b8fff14" LastKnownName="Web API Consumer" />
+            </type_NamedElement>
+          </property>
+          <property Id="b95214d6-a3e3-42d2-b958-29dc08b0d8a8" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2d77cea8-d1c9-4df2-a438-bb73aaab5809" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e703b2da-17be-4063-87b9-15342ed0d6c7" LastKnownName="ASP.NET" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="38699b99-f047-4ccf-ab75-ae545b8fff14" name="Web API Consumer" isAbstract="false" isLeaf="false" cachedFullName="WebApi.Modeling::Web API Consumer">
+        <elementDefinition Id="f476b99f-1382-44d5-a8b0-c9228fab1fc0" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e703b2da-17be-4063-87b9-15342ed0d6c7" name="ASP.NET" isAbstract="false" isLeaf="false" cachedFullName="WebApi.Modeling::ASP.NET">
+        <elementDefinition Id="98fadcd9-dccc-4a79-9d26-f012a2445b64" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="6c666eb2-1d03-4b32-a96e-95cc55d6302c" name="WebApi.Modeling">
+    <elementDefinition Id="b3983bd9-29fe-4760-ac4d-6e6bfc039a21" />
+  </package>
+</SequenceDesignerModel>

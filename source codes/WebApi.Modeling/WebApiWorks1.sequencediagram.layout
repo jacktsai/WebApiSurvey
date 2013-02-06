@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sequenceDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WebApiWorks1">
+  <SequenceDesignerModelMoniker Id="2ce6c59b-a85e-45e3-90f1-7c929745c010" />
+  <nestedChildShapes>
+    <lifelineShape Id="bf741abd-bb63-45b0-ae80-10fc21921559" absoluteBounds="1.025, 1, 0.15, 7" visible="true" visualStyleMode="Modified">
+      <lifelineMoniker Id="72c48b0f-8996-485c-8bcd-30ae4c285961" LastKnownName="Web API Consumer" />
+      <relativeChildShapes>
+        <umlLifelineHeadShape Id="21e51019-962c-4b33-8b0f-87d98923f16b" absoluteBounds="0.45440035581588734, 0.6, 1.2911992883682251, 0.4" customColor="White" visualStyleMode="Modified">
+          <lifelineMoniker Id="72c48b0f-8996-485c-8bcd-30ae4c285961" LastKnownName="Web API Consumer" />
+          <relativeChildShapes />
+        </umlLifelineHeadShape>
+        <lifelineHoverShape Id="ca3e3e59-fd01-4aeb-afa0-d6c483d60897" absoluteBounds="1.025, 1, 0, 7">
+          <lifelineMoniker Id="72c48b0f-8996-485c-8bcd-30ae4c285961" LastKnownName="Web API Consumer" />
+        </lifelineHoverShape>
+      </relativeChildShapes>
+    </lifelineShape>
+  </nestedChildShapes>
+</sequenceDesignerDiagram>
