@@ -38,6 +38,7 @@ namespace WebApi
         {
             //unityContainer.RegisterType<IHttpContentEncryptor, FakeHttpContentEncryptor>();
             unityContainer.RegisterType<IHttpContentEncryptor, AesHttpContentEncryptor>();
+            unityContainer.RegisterType<IKeyProvider, DefaultKeyProvider>();
             unityContainer.RegisterType<ServerSideSecurityHandler>();
             unityContainer.RegisterType<ClientSideSecurityHandler>();
         }
@@ -89,7 +90,7 @@ namespace WebApi
         private static void RegisterServices(ServicesContainer services)
         {
             services.Replace(typeof(IAssembliesResolver), new MyAssembliesResolver());
-            services.Replace(typeof(ITraceWriter), new MyTraceWriter());
+            //services.Replace(typeof(ITraceWriter), new MyTraceWriter());
             services.Replace(typeof(IDocumentationProvider), new MyDocumentationProvider());
         }
 

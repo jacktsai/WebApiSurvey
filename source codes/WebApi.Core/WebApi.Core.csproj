@@ -32,11 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Security\Cryptography\AesHttpContentEncryptor.cs" />
+    <Compile Include="Security\Cryptography\DefaultKeyProvider.cs" />
     <Compile Include="Security\Cryptography\FakeHttpContentEncryptor.cs" />
     <Compile Include="ComponentModel\DataAnnotations\MyRequiredAttribute.cs" />
     <Compile Include="Net\Http\ClientSideSecurityHandler.cs" />
     <Compile Include="Net\Http\ServerSideSecurityHandler.cs" />
     <Compile Include="Security\Cryptography\IHttpContentEncryptor.cs" />
+    <Compile Include="Security\Cryptography\IKeyProvider.cs" />
     <Compile Include="Web\Http\Description\ActionDocAttribute.cs" />
     <Compile Include="Web\Http\Description\MyDocumentationProvider.cs" />
     <Compile Include="Web\Http\Description\ParameterDocAttribute.cs" />

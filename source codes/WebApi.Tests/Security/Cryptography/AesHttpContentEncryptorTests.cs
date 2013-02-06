@@ -12,7 +12,7 @@ namespace WebApi.Security.Cryptography
     {
         protected override IHttpContentEncryptor CreateEncryptor()
         {
-            return new AesHttpContentEncryptor();
+            return new AesHttpContentEncryptor(new DefaultKeyProvider());
         }
     }
 }

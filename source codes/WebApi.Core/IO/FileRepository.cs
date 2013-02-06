@@ -52,6 +52,11 @@ namespace WebApi.IO
                 msg.AppendLine();
             }
             msg.AppendLine();
+            // 不可以對從 HttpContent 取得的 Stream 調用 Dispose 方法，否則後面的 handler 會得不到資料。
+            //using (var r = new StreamReader(request.Content.ReadAsStreamAsync().Result))
+            //{
+            //    msg.AppendLine(r.ReadToEnd());
+            //}
             msg.AppendLine(request.Content.ReadAsStringAsync().Result);
             Trace.WriteLine(msg);
 

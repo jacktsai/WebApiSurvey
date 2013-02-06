@@ -29,8 +29,6 @@ namespace WebApi.Web.Http
             // 多一層授權檢查
             if (authorized)
             {
-                authorized = false;
-
                 var query = actionContext.Request.GetQueryNameValuePairs();
                 foreach (var pair in query)
                 {

@@ -43,8 +43,11 @@ namespace WebApi.Web.Http.Controllers
         public string Post([FromBody]string value)
         {
             var writer = base.Configuration.Services.GetTraceWriter();
-            writer.Trace(base.Request, "ValuesController", TraceLevel.Info, r => r.Message = "I have received a post message!");
-            writer.Trace(base.Request, "ValuesController", TraceLevel.Info, r => r.Message = string.Format("Post with '{0}'.", value));
+            if (writer != null)
+            {
+                writer.Trace(base.Request, "ValuesController", TraceLevel.Info, r => r.Message = "I have received a post message!");
+                writer.Trace(base.Request, "ValuesController", TraceLevel.Info, r => r.Message = string.Format("Post with '{0}'.", value));
+            }
 
             return value;
         }

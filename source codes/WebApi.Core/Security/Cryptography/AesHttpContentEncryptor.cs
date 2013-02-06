@@ -12,11 +12,13 @@ namespace WebApi.Security.Cryptography
 {
     public class AesHttpContentEncryptor : IHttpContentEncryptor
     {
+        private readonly IKeyProvider keyProvider;
         private readonly SymmetricAlgorithm algorithm;
 
-        public AesHttpContentEncryptor()
+        public AesHttpContentEncryptor(IKeyProvider keyProvider)
         {
-            algorithm = new AesManaged();
+            this.keyProvider = keyProvider;
+            this.algorithm = new AesManaged();
         }
 
         HttpContent IHttpContentEncryptor.Encrypt(HttpContent originContent)
@@ -26,27 +28,30 @@ namespace WebApi.Security.Cryptography
                 throw new ArgumentNullException("originContent");
             }
 
-            var originStream = originContent.ReadAsStreamAsync().Result;
-            if (originStream.Length == 0)
+            var originData = originContent.ReadAsStreamAsync().Result;
+
+            if (originData.Length == 0)
             {
                 return originContent;
             }
+
+            this.algorithm.Key = this.keyProvider.Key;
+            this.algorithm.IV = this.keyProvider.IV;
 
             using (var encryptor = algorithm.CreateEncryptor())
             {
                 using (var encryptedData = new MemoryStream())
                 {
-                    using (var cryptoStream = new CryptoStream(encryptedData, encryptor, CryptoStreamMode.Write))
-                    {
-                        originStream.CopyTo(cryptoStream);
-                    }
+                    var cryptoStream = new CryptoStream(encryptedData, encryptor, CryptoStreamMode.Write);
+                    originData.CopyTo(cryptoStream);
+                    cryptoStream.FlushFinalBlock();
+                    encryptedData.Position = 0;
 
-                    var encryptedBytes = encryptedData.ToArray();
-                    var encodedString = Convert.ToBase64String(encryptedBytes);
-                    Trace.WriteLine(string.Format("[Encrypt]EncodedString: {0}", encodedString));
-                    var encodedContent = new StringContent(encodedString,Encoding.UTF8);
-                    encodedContent.Headers.ContentType = originContent.Headers.ContentType;
-                    return encodedContent;
+                    var encodedString = Convert.ToBase64String(encryptedData.ToArray());
+                    var encryptedContent = new StringContent(encodedString);
+                    encryptedContent.Headers.ContentType = originContent.Headers.ContentType;
+
+                    return encryptedContent;
                 }
             }
         }
@@ -58,37 +63,30 @@ namespace WebApi.Security.Cryptography
                 throw new ArgumentNullException("encryptedContent");
             }
 
-            //var encodedString = encryptedContent.ReadAsStringAsync().Result;
+            var encodedString = encryptedContent.ReadAsStringAsync().Result;
 
-            var encodedString = string.Empty;
-            var encryptedStream = encryptedContent.ReadAsStreamAsync().Result;
-            using (var streamReader = new StreamReader(encryptedStream, Encoding.UTF8))
+            using (var encryptedData = new MemoryStream(Convert.FromBase64String(encodedString)))
             {
-                encodedString = streamReader.ReadToEnd();
-            }
-
-            Trace.WriteLine(string.Format("[Decrypt]EncodedString: {0}", encodedString));
-            if (string.IsNullOrEmpty(encodedString))
-            {
-                return encryptedContent;
-            }
-
-            using (var decryptor = algorithm.CreateDecryptor())
-            {
-                var encryptedBytes = Convert.FromBase64String(encodedString);
-
-                using (var encryptedData = new MemoryStream(encryptedBytes))
+                if (encryptedData.Length == 0)
                 {
-                    using (var cryptoStream = new CryptoStream(encryptedData, decryptor, CryptoStreamMode.Read))
-                    {
-                        var originStream = new MemoryStream((int)encryptedData.Length);
-                        cryptoStream.CopyTo(originStream);
-                        originStream.Position = 0;
+                    return encryptedContent;
+                }
 
-                        var decodedContent = new StreamContent(originStream);
-                        decodedContent.Headers.ContentType = encryptedContent.Headers.ContentType;
-                        return decodedContent;
-                    }
+                this.algorithm.Key = this.keyProvider.Key;
+                this.algorithm.IV = this.keyProvider.IV;
+
+                using (var decryptor = algorithm.CreateDecryptor())
+                {
+                    var cryptoStream = new CryptoStream(encryptedData, decryptor, CryptoStreamMode.Read);
+                    var originData = new MemoryStream((int)encryptedData.Length);
+                    cryptoStream.CopyTo(originData);
+                    originData.Flush();
+                    originData.Position = 0;
+
+                    var originContent = new StreamContent(originData);
+                    originContent.Headers.ContentType = encryptedContent.Headers.ContentType;
+
+                    return originContent;
                 }
             }
         }
