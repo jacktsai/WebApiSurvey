@@ -15,7 +15,6 @@ using System.Web.Http.Filters;
 
 namespace WebApi.Web.Http.Controllers
 {
-    [MyAuthorize]
     public class ProductsController : ApiController
     {
         private readonly IProductService productService;
@@ -25,6 +24,7 @@ namespace WebApi.Web.Http.Controllers
             this.productService = new ProductServiceFactory().GetProductService();
         }
 
+        [Queryable]
         public IEnumerable<Category> GetCategories()
         {
             var writer = base.Configuration.Services.GetTraceWriter();

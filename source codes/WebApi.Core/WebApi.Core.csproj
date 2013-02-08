@@ -40,6 +40,10 @@
     <Compile Include="Net\Http\ServerSideSecurityHandler.cs" />
     <Compile Include="Security\Cryptography\IHttpContentEncryptor.cs" />
     <Compile Include="Security\Cryptography\IKeyProvider.cs" />
+    <Compile Include="Web\Http\Controllers\CategoryController.cs" />
+    <Compile Include="Web\Http\Controllers\ProductsController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Web\Http\Description\ActionDocAttribute.cs" />
     <Compile Include="Web\Http\Description\MyDocumentationProvider.cs" />
     <Compile Include="Web\Http\Description\ParameterDocAttribute.cs" />
@@ -68,7 +72,6 @@
     <Compile Include="DAL\IProductDao.cs" />
     <Compile Include="BLL\Entities\Product.cs" />
     <Compile Include="DAL\ProductSelectArguments.cs" />
-    <Compile Include="Web\Http\Controllers\ProductsController.cs" />
     <Compile Include="Net\Http\Formatting\MyJsonFormatter.cs" />
     <Compile Include="Web\Http\Dependencies\MyDependencyResolver.cs" />
     <Compile Include="IO\FileRepository.cs" />
@@ -98,6 +101,14 @@
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\github\ASP-NET-MVC\aspnetwebstack\bin\Extensions\Debug\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\github\ASP-NET-MVC\aspnetwebstack\bin\Extensions\Debug\Microsoft.Data.OData.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -135,6 +146,10 @@
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\github\ASP-NET-MVC\aspnetwebstack\bin\Extensions\Debug\System.Web.Http.OData.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
@@ -145,12 +160,6 @@
     <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\aspnetwebstack\src\System.Web.Http.OData\System.Web.Http.OData.csproj">
-      <Project>{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}</Project>
-      <Name>System.Web.Http.OData</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

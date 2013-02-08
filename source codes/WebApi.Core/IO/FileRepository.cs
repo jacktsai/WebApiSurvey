@@ -52,11 +52,14 @@ namespace WebApi.IO
                 msg.AppendLine();
             }
 
-            var content = request.Content.ReadAsStringAsync().Result;
-            if (!string.IsNullOrEmpty(content))
+            if (request.Content != null)
             {
-                msg.AppendLine();
-                msg.AppendLine(content);
+                var content = request.Content.ReadAsStringAsync().Result;
+                if (!string.IsNullOrEmpty(content))
+                {
+                    msg.AppendLine();
+                    msg.AppendLine(content);
+                }
             }
 
             Trace.WriteLine(msg);
@@ -81,11 +84,14 @@ namespace WebApi.IO
                 msg.AppendLine();
             }
 
-            var content = response.Content.ReadAsStringAsync().Result;
-            if (!string.IsNullOrEmpty(content))
+            if (response.Content != null)
             {
-                msg.AppendLine();
-                msg.AppendLine(content);
+                var content = response.Content.ReadAsStringAsync().Result;
+                if (!string.IsNullOrEmpty(content))
+                {
+                    msg.AppendLine();
+                    msg.AppendLine(content);
+                }
             }
 
             Trace.WriteLine(msg);

@@ -1,31 +1,20 @@
-﻿using System;
-using System.Linq;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Http.Filters;
-using System.Web.Optimization;
-using WebApi.Net.Http;
-using System.Net.Http.Formatting;
-using WebApi.Net.Http.Formatting;
-using System.Web.Http.Tracing;
-using WebApi.Web.Http.Tracing;
-using WebApi.Web.Http.Dependencies;
-using WebApi.Web.Http;
-using WebApi.Web.Http.Filters;
-using System.Web.Configuration;
-using System.Diagnostics;
-using System.Web.Routing;
-using System.Web.Http.Routing;
-using System.Reflection;
-using System.Collections.Generic;
 using System.Web.Http.Description;
-using WebApi.Web.Http.Description;
 using System.Web.Http.Dispatcher;
-using WebApi.Web.Http.Dispatcher;
+using System.Web.Http.Filters;
+using System.Web.Http.OData.Builder;
 using Microsoft.Practices.Unity;
+using WebApi.BLL.Entities;
+using WebApi.Net.Http;
 using WebApi.Security.Cryptography;
+using WebApi.Web.Http.Dependencies;
+using WebApi.Web.Http.Description;
+using WebApi.Web.Http.Dispatcher;
+using WebApi.Web.Http.Filters;
 
 namespace WebApi
 {
@@ -84,12 +73,14 @@ namespace WebApi
             //handlers.Add(securityHandler);
 
             handlers.Add(new AuthenticationHandler());
+
             //handlers.Add(new DumpMessageHandler());
         }
 
         private static void RegisterServices(ServicesContainer services)
         {
             services.Replace(typeof(IAssembliesResolver), new MyAssembliesResolver());
+
             //services.Replace(typeof(ITraceWriter), new MyTraceWriter());
             services.Replace(typeof(IDocumentationProvider), new MyDocumentationProvider());
         }
@@ -108,6 +99,10 @@ namespace WebApi
             //此預設會在相同 http method 對應到多個 action 時造成 HTTP runtime 錯誤。
             //routes.MapHttpRoute("API Default", "api/{controller}/{id}", new { id = RouteParameter.Optional });
             routes.MapHttpRoute("API Default", "api/{controller}/{action}");
+
+            var builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Category>("Category"); // {name}Controller
+            routes.MapODataRoute("EntitySet test", "odata", builder.GetEdmModel());
 
             //foreach (Route r in RouteTable.Routes)
             //{

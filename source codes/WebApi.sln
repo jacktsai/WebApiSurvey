@@ -21,7 +21,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApi.Site", "WebApi.Site\", "{3F63D960-28C5-40AD-A49E-135913945AA9}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{B18729F3-8088-47C3-B759-8BBDD849A80A}|WebApi.Core.dll;{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}|System.Web.Http.OData.dll;"
+		ProjectReferences = "{B18729F3-8088-47C3-B759-8BBDD849A80A}|WebApi.Core.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/WebApi.Site"
 		Debug.AspNetCompiler.PhysicalPath = "WebApi.Site\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebApi.Site\"
@@ -51,10 +51,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-BASIC", "1-BASIC", "{07D2DC76-B766-4C26-BCE3-42E1B20FE449}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-ADVANCED", "2-ADVANCED", "{5135FAC7-2042-499F-A1C2-7C23650B7D72}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Party", "3-Party", "{E0343D48-B426-4060-8391-99C822AA6AC7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Web.Http.OData", "..\..\aspnetwebstack\src\System.Web.Http.OData\System.Web.Http.OData.csproj", "{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -177,21 +173,6 @@ Global
 		{8A13EFB1-7B62-490D-8FCD-100A5BAD5D4C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{8A13EFB1-7B62-490D-8FCD-100A5BAD5D4C}.Release|x86.ActiveCfg = Release|x86
 		{8A13EFB1-7B62-490D-8FCD-100A5BAD5D4C}.Release|x86.Build.0 = Release|x86
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.CodeAnalysis|Any CPU.ActiveCfg = CodeAnalysis|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.CodeAnalysis|Any CPU.Build.0 = CodeAnalysis|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.CodeAnalysis|Mixed Platforms.ActiveCfg = CodeAnalysis|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.CodeAnalysis|Mixed Platforms.Build.0 = CodeAnalysis|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.CodeAnalysis|x86.ActiveCfg = CodeAnalysis|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,7 +180,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5135FAC7-2042-499F-A1C2-7C23650B7D72} = {D5F289AA-59D4-4336-80FB-20C0763819ED}
 		{07D2DC76-B766-4C26-BCE3-42E1B20FE449} = {D5F289AA-59D4-4336-80FB-20C0763819ED}
-		{E0343D48-B426-4060-8391-99C822AA6AC7} = {D5F289AA-59D4-4336-80FB-20C0763819ED}
 		{B18729F3-8088-47C3-B759-8BBDD849A80A} = {5135FAC7-2042-499F-A1C2-7C23650B7D72}
 		{3F63D960-28C5-40AD-A49E-135913945AA9} = {5135FAC7-2042-499F-A1C2-7C23650B7D72}
 		{F32C12D9-FE38-4805-9E57-935601C04891} = {5135FAC7-2042-499F-A1C2-7C23650B7D72}
@@ -208,7 +188,6 @@ Global
 		{3A2CC2C7-BA25-4DFC-B6FD-7B39C28F0ED1} = {A353233F-F2CC-42DE-BBA6-B02845844C52}
 		{8A13EFB1-7B62-490D-8FCD-100A5BAD5D4C} = {07D2DC76-B766-4C26-BCE3-42E1B20FE449}
 		{A3D72652-274C-4412-8609-C2A447BE6BF3} = {07D2DC76-B766-4C26-BCE3-42E1B20FE449}
-		{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE} = {E0343D48-B426-4060-8391-99C822AA6AC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
