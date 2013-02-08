@@ -1,4 +1,6 @@
-﻿namespace WebApi.BLL.Entities
+﻿using System.Data.Services.Common;
+
+namespace WebApi.BLL.Entities
 {
     public class Category
     {

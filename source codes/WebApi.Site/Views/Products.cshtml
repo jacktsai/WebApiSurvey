@@ -1,50 +1,145 @@
 ﻿<script src="~/Scripts/jquery-1.7.1.js" type="text/javascript"></script>
 <script type="text/javascript">
-    function getCategories() {
+
+    function appendAuthorization(xhr) {
+        $('#errorMessage').text('');
+        xhr.setRequestHeader('Authorization', 'Seven11 jacktsai');
+    }
+
+    function error(jqXHR, status, error) {
+        $('#errorMessage').text(jqXHR.responseText);
+    }
+
+    var storeNames = {};
+    function getStoreName(store) {
+        if (storeNames[store] == undefined) {
+            $.ajax({
+                url: '/api/Products/GetStoreName?store=' + store,
+                async: false,
+                type: 'GET',
+                dataType: 'json',
+                beforeSend: appendAuthorization,
+                success: function (data) {
+                    storeNames[store] = data;
+                },
+                error: error
+            });
+        }
+
+        return storeNames[store];
+    }
+
+    function showCategory() {
         $.ajax({
             url: '/api/Products/GetCategories',
             type: 'GET',
             dataType: 'json',
             beforeSend: appendAuthorization,
-            success: displayCategories
+            success: function (data) {
+                var categoryList = $('#categoryList');
+
+                $.each(data, function (key, val) {
+                    var categoryItem = $('<li/>');
+                    categoryItem.appendTo(categoryList);
+
+                    var categoryButton = $('<a href="#" onclick="showProduct(this)"/>');
+                    categoryButton.text(val.Name);
+                    categoryButton[0].category = val;
+                    categoryButton.appendTo(categoryItem);
+
+                    var productList = $('<ul id="category' + val.Id + '"/>');
+                    productList.appendTo(categoryItem);
+                })
+            },
+            error: error
         });
     }
 
-    function appendAuthorization(xhr) {
-        xhr.setRequestHeader('Authorization', 'Seven11 jacktsai');
-    }
+    function showProduct(arg) {
+        var category = arg.category;
 
-    function displayCategories(data) {
-        var categories = $('#categories');
+        var productList = $('#category' + category.Id);
+        productList.empty();
 
-        $.each(data, function (key, val) {
-            var category = $('<li/>');
-            category.text(val.Name);
-            category.appendTo(categories);
-
-            category = $('<ul id="category' + val.Id + '"/>');
-            category.appendTo(categories);
-
-            $.ajax({
-                url: '/api/Products/GetProducts?pass=true&categoryId=' + val.Id,
-                type: 'GET',
-                dataType: 'json',
-                beforeSend: appendAuthorization,
-                success: displayProducts
-            });
-        })
-    }
-
-    function displayProducts(data) {
-        $.each(data, function (key, val) {
-            var product = $('<li id="product' + val.Id + '"/>');
-            product.text(val.Name);
-            product.appendTo('#category' + val.Category.Id);
+        $.ajax({
+            url: '/api/Products/GetProducts?pass=true&categoryId=' + category.Id,
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: appendAuthorization,
+            success: function (data) {
+                $.each(data, function (key, val) {
+                    var productItem = $('<li id="product' + val.Id + '"/>');
+                    productItem.text(val.Name);
+                    productItem.appendTo('#category' + val.Category.Id);
+                });
+            },
+            error: error
         });
     }
+
+    function search(button, url, conditionSelector, resultSelector) {
+        button.disabled = true;
+
+        var condition = $(conditionSelector).val();
+        var result = $(resultSelector);
+        result.empty();
+
+        $.ajax({
+            url: url,
+            data: condition,
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: appendAuthorization,
+            success: function (data) {
+                $.each(data, function (key, val) {
+                    var item = $('<li/>');
+                    //var storeName = getStoreName(val.Category.Store);
+                    var text = val.Name;
+                    item.text(text);
+                    item.appendTo(result);
+                    buildPropertyTree(val).appendTo(item);
+                });
+            },
+            error: error,
+            complete: function () {
+                button.disabled = false;
+            }
+        });
+    }
+
+    function buildPropertyTree(obj) {
+        var propertyList = $('<ul/>');
+        for (var p in obj) {
+            var propertyItem = $('<li/>');
+
+            var val = obj[p];
+
+            if (typeof val == 'object') {
+                propertyItem.text(p);
+                buildPropertyTree(val).appendTo(propertyItem);
+            } else {
+                propertyItem.text(p + '=' + val);
+            }
+            propertyItem.appendTo(propertyList);
+        }
+        return propertyList;
+    }
+
 </script>
 <div>
-    <input type="button" value='Get Categories' onclick="getCategories();" />
-    <ul id="categories">
-    </ul>
+    <input type="button" value="Get Categories" onclick="showCategory();" />
+    <ul id="categoryList"></ul>
+</div>
+<div>
+    <input id="productsCondition" type="text" size="50" />
+    <input type="button" value="Search products" onclick="search(this, '/api/Products/GetProducts', '#productsCondition', '#productsResult')" />
+    <ul id="productsResult"></ul>
+</div>
+<div>
+    <input id="usersCondition" type="text" size="50" />
+    <input type="button" value="Search users" onclick="search(this, '/mydataservice.svc/Users', '#usersCondition', '#usersResult')" />
+    <ul id="usersResult"></ul>
+</div>
+<div>
+<div id="errorMessage"></div>
 </div>

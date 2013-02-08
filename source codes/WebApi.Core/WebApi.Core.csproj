@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BLL\Entities\User.cs" />
     <Compile Include="Security\Cryptography\AesHttpContentEncryptor.cs" />
     <Compile Include="Security\Cryptography\DefaultKeyProvider.cs" />
     <Compile Include="Security\Cryptography\FakeHttpContentEncryptor.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Net\Http\DumpMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyConfig.cs" />
+    <Compile Include="Web\Http\MyQueryableAttribute.cs" />
     <Compile Include="Web\Http\Tracing\MyTraceManager.cs" />
     <Compile Include="Web\Http\Tracing\MyTraceWriter.cs" />
     <Compile Include="Web\MyHttpHandler.cs" />
@@ -89,7 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -115,6 +119,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
     </Reference>
@@ -139,6 +145,12 @@
     <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\aspnetwebstack\src\System.Web.Http.OData\System.Web.Http.OData.csproj">
+      <Project>{CF73AAA7-ACE9-4C91-AFA5-5EC1DF18FEEE}</Project>
+      <Name>System.Web.Http.OData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

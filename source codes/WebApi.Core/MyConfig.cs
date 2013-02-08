@@ -80,11 +80,11 @@ namespace WebApi
         {
             handlers.Add(new DumpMessageHandler());
 
-            var securityHandler = GetService<ServerSideSecurityHandler>() as DelegatingHandler;
-            handlers.Add(securityHandler);
+            //var securityHandler = GetService<ServerSideSecurityHandler>() as DelegatingHandler;
+            //handlers.Add(securityHandler);
 
             handlers.Add(new AuthenticationHandler());
-            handlers.Add(new DumpMessageHandler());
+            //handlers.Add(new DumpMessageHandler());
         }
 
         private static void RegisterServices(ServicesContainer services)

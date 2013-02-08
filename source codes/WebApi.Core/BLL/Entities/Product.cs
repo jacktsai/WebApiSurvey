@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebApi.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using System.Data.Services.Common;
 
 namespace WebApi.BLL.Entities
 {

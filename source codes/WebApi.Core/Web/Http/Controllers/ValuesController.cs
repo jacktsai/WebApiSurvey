@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -8,6 +7,8 @@ using Newtonsoft.Json.Linq;
 using System.Web.Http.Tracing;
 using WebApi.Web.Http.Description;
 using System.Web.Http.Description;
+using WebApi.BLL.Entities;
+using System.Linq;
 
 namespace WebApi.Web.Http.Controllers
 {
@@ -39,7 +40,7 @@ namespace WebApi.Web.Http.Controllers
             return string.Format("id {0}'s value is {1}", id, name);
         }
 
-        // POST api/values
+        // POST api/values/post
         public string Post([FromBody]string value)
         {
             var writer = base.Configuration.Services.GetTraceWriter();
@@ -52,18 +53,19 @@ namespace WebApi.Web.Http.Controllers
             return value;
         }
 
-        // PUT api/values/5
+        // PUT api/values/put
         public string Put(int id, [FromBody]string value)
         {
             return string.Format("id={0}, value={1}.", id, value);
         }
 
-        // DELETE api/values/5
+        // DELETE api/values/delete
         public int Delete(int id)
         {
             return id;
         }
 
+        [NonAction]
         public JObject GetWithContent(JObject obj)
         {
             return obj;
@@ -81,6 +83,18 @@ namespace WebApi.Web.Http.Controllers
         public JObject SomeMethod([FromBody]JObject obj)
         {
             return obj;
+        }
+
+        [HttpGet]
+        [Queryable]
+        public IEnumerable<User> OData()
+        {
+            return new User[]
+            {
+                new User{ Id = 1, Name = "Jack 1", Age = 33 },
+                new User{ Id = 2, Name = "Jack 2 ", Age = 33 },
+                new User{ Id = 3, Name = "Jack 3", Age = 33 },
+            }.AsQueryable();
         }
     }
 }

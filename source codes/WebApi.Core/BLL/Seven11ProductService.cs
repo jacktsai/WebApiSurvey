@@ -30,7 +30,7 @@ namespace WebApi.BLL
             return categoryDao.Select(args);
         }
 
-        public IEnumerable<Product> GetProducts(int categoryId)
+        public IEnumerable<Product> GetProducts(int? categoryId)
         {
             var args = new ProductSelectArguments
             {

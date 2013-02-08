@@ -25,7 +25,7 @@ namespace WebApi.BLL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Product> GetProducts(int categoryId)
+        public IEnumerable<Product> GetProducts(int? categoryId)
         {
             throw new NotImplementedException();
         }
