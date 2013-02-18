@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WebApi.vsmdi = WebApi.vsmdi
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApi.Site", "WebApi.Site\", "{3F63D960-28C5-40AD-A49E-135913945AA9}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebApi.Site", "WebApi.Site", "{3F63D960-28C5-40AD-A49E-135913945AA9}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{B18729F3-8088-47C3-B759-8BBDD849A80A}|WebApi.Core.dll;"
@@ -51,6 +51,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-BASIC", "1-BASIC", "{07D2DC76-B766-4C26-BCE3-42E1B20FE449}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-ADVANCED", "2-ADVANCED", "{5135FAC7-2042-499F-A1C2-7C23650B7D72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{10C25EE7-4A15-43A9-8030-B23C7DAF2321}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

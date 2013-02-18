@@ -9,7 +9,7 @@ namespace WebApi.BLL.Entities
     public class Product
     {
         [Required, DataMember(IsRequired = true)]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Required, DataMember]
         public string Name { get; set; }

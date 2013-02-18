@@ -1,0 +1,38 @@
+﻿@Scripts.Render("~/bundles/jquery")
+<label>
+    Values:</label>
+<ul id='values'>
+</ul>
+<input type="button" value='Get All' onclick="get()" />
+<input type="button" value='Get 5' onclick="get(5)" />
+<script type="text/javascript">
+    function get(id) {
+        var uri = '/api/values/';
+
+        if (id != undefined) {
+            uri = uri + id;
+        }
+
+        $.ajax({
+            url: uri,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data, status, jqXHR) {
+                var values = $('#values');
+                values.empty();
+                if (Array.isArray(data)) {
+                    $.each(data, function (key, val) {
+                        $('<li>', { text: val }).appendTo(values);
+                    });
+                }
+                else {
+                    $('<li>', { text: data }).appendTo(values);
+                }
+                window.alert(status);
+            },
+            error: function (jqXHR, status, error) {
+                window.alert(error);
+            }
+        });
+    }
+</script>

@@ -21,7 +21,7 @@ namespace WebApi
     public static class MyConfig
     {
         private static readonly IUnityContainer unityContainer = new UnityContainer();
-        private static HttpConfiguration config;
+        private static HttpConfiguration httpConfig;
 
         static MyConfig()
         {
@@ -34,7 +34,7 @@ namespace WebApi
 
         public static void Config(HttpConfiguration config)
         {
-            MyConfig.config = config;
+            MyConfig.httpConfig = config;
 
             config.DependencyResolver = new MyDependencyResolver(unityContainer);
 
@@ -52,9 +52,9 @@ namespace WebApi
                 return unityContainer.Resolve<T>();
             }
 
-            if (config != null)
+            if (httpConfig != null)
             {
-                var service = config.Services.GetService(typeof(T));
+                var service = httpConfig.Services.GetService(typeof(T));
 
                 if (service != null)
                 {

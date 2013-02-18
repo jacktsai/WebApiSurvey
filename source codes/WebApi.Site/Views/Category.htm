@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/my.js" type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        function showCategory() {
+            var categoryList = $('#categoryList');
+            categoryList.empty();
+
+            $.getJSON(
+                '/odata/Category/',
+                function (data) {
+                    $.each(data.value, function (key, val) {
+                        var categoryItem = $('<li>', { text: val.Name });
+                        var propTree = buildPropertyTree(val);
+                        propTree.appendTo(categoryItem);
+                        categoryItem.appendTo(categoryList);
+                    });
+                }
+            );
+        }
+
+    </script>
+    <input type="button" value="Get category list" onclick="showCategory()" />
+    <ul id="categoryList"></ul>
+</body>
+</html>

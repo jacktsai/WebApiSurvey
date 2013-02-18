@@ -11,6 +11,11 @@ namespace WebApi.Web.Http.Controllers
 {
     public class CategoryController : EntitySetController<Category, int>
     {
+        protected override Category GetEntityByKey(int key)
+        {
+            return this.productService.GetCategories().FirstOrDefault(p => p.Id == key);
+        }
+
         private readonly IProductService productService;
 
         public CategoryController()
@@ -22,11 +27,6 @@ namespace WebApi.Web.Http.Controllers
         public override IQueryable<Category> Get()
         {
             return this.productService.GetCategories().AsQueryable();
-        }
-
-        protected override Category GetEntityByKey(int key)
-        {
-            return this.productService.GetCategories().FirstOrDefault(p => p.Id == key);
         }
 
         protected override Category PatchEntity(int key, Delta<Category> patch)
