@@ -13,7 +13,7 @@ using WebApi.Web.Http.Controllers;
 
 namespace WebApi.Web.Http.Filters
 {
-    internal class MyAuthorizationFilter : IAuthorizationFilter
+    public class MyAuthorizationFilter : IAuthorizationFilter
     {
         Task<HttpResponseMessage> IAuthorizationFilter.ExecuteAuthorizationFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func<Task<HttpResponseMessage>> continuation)
         {

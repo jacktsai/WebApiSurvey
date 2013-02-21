@@ -42,10 +42,11 @@ namespace WebApi.Web.Http.Controllers
         [TestInitialize]
         public void TestInitialize()
         {
-            var securityHandler = MyConfig.GetService<ClientSideSecurityHandler>();
-            securityHandler.InnerHandler = new HttpClientHandler();
+            //var handler = MyConfig.GetService<ClientSideSecurityHandler>();
+            //handler.InnerHandler = new HttpClientHandler();
+            var handler = new HttpClientHandler();
 
-            client = new HttpClient(securityHandler);
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri(BaseAddr);
         }
 
