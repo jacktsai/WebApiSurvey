@@ -9,6 +9,9 @@ using System.Web.Http;
 
 namespace WebApi.Web.Http.Controllers
 {
+    /// <summary>
+    /// OData EntitySetController 範例。
+    /// </summary>
     public class CategoryController : EntitySetController<Category, int>
     {
         protected override Category GetEntityByKey(int key)

@@ -15,6 +15,9 @@ using System.Web.Http.Filters;
 
 namespace WebApi.Web.Http.Controllers
 {
+    /// <summary>
+    /// 進階範例。
+    /// </summary>
     public class ProductsController : ApiController
     {
         private readonly IProductService productService;

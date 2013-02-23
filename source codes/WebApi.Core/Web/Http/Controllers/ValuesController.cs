@@ -12,6 +12,9 @@ using System.Linq;
 
 namespace WebApi.Web.Http.Controllers
 {
+    /// <summary>
+    /// 基本範例。
+    /// </summary>
     [AllowAnonymous]
     public class ValuesController : ApiController
     {

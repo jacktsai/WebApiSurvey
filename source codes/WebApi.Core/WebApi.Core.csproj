@@ -43,6 +43,7 @@
     <Compile Include="Security\Cryptography\IHttpContentEncryptor.cs" />
     <Compile Include="Security\Cryptography\IKeyProvider.cs" />
     <Compile Include="Web\Http\Controllers\CategoryController.cs" />
+    <Compile Include="Web\Http\Controllers\ProductsExController.cs" />
     <Compile Include="Web\Http\Controllers\ProductsController.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -18,6 +18,8 @@ using System.Web.Http.Dispatcher;
 using System.Net;
 using System.Web.Http.Hosting;
 using System.Web.Http.WebHost;
+using System.Web.Http.Routing;
+using WebApi.Util;
 
 namespace WebApi.Web.Http.Filters
 {
@@ -25,31 +27,61 @@ namespace WebApi.Web.Http.Filters
     public class MyAuthorizationFilterTests
     {
         [TestMethod]
-        public void AuthorizeTest()
+        public void WithoutPass()
         {
-            var httpConfiguration = new HttpConfiguration();
-
-            var httpRoute = httpConfiguration.Routes.MapHttpRoute("API Default", "api/{controller}/{action}");
-
             var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8080/api/values/get");
-            var routeData = httpRoute.GetRouteData(string.Empty, request);
-            request.Properties.Add(HttpPropertyKeys.HttpRouteDataKey, routeData);
+            var controllerContext = ContextUtil.CreateControllerContext(request: request);
+            var actionContext = ContextUtil.CreateActionContext(controllerContext: controllerContext);
 
-            var httpControllerSelector = httpConfiguration.Services.GetHttpControllerSelector();
-            var controllerDescriptor = httpControllerSelector.SelectController(request);
-            var controllerContext = new HttpControllerContext(httpConfiguration, routeData, request);
-
-            var actionSelector = httpConfiguration.Services.GetActionSelector();
-            var actionDescriptor = actionSelector.SelectAction(controllerContext);
-            var actionContext = new HttpActionContext(controllerContext, actionDescriptor);
+            var expected = new HttpResponseMessage(HttpStatusCode.OK);
 
             var target = new MyAuthorizationFilter() as IAuthorizationFilter;
-            target.ExecuteAuthorizationFilterAsync(actionContext, CancellationToken.None, () =>
+            var actual = target.ExecuteAuthorizationFilterAsync(actionContext, CancellationToken.None, () =>
                 {
                     var source = new TaskCompletionSource<HttpResponseMessage>();
-                    source.SetResult(new HttpResponseMessage(HttpStatusCode.OK));
+                    source.SetResult(expected);
                     return source.Task;
-                });
+                }).Result;
+
+            Assert.AreSame(expected, actual);
+        }
+
+        [TestMethod]
+        public void PassIsTrue()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8080/api/values/get?pass=true");
+            var controllerContext = ContextUtil.CreateControllerContext(request: request);
+            var actionContext = ContextUtil.CreateActionContext(controllerContext: controllerContext);
+
+            var expected = new HttpResponseMessage(HttpStatusCode.OK);
+
+            var target = new MyAuthorizationFilter() as IAuthorizationFilter;
+            var actual = target.ExecuteAuthorizationFilterAsync(actionContext, CancellationToken.None, () =>
+            {
+                var source = new TaskCompletionSource<HttpResponseMessage>();
+                source.SetResult(expected);
+                return source.Task;
+            }).Result;
+
+            Assert.AreSame(expected, actual);
+        }
+
+        [TestMethod]
+        public void PassIsFalse()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:8080/api/values/get?pass=false");
+            var controllerContext = ContextUtil.CreateControllerContext(request: request);
+            var actionContext = ContextUtil.CreateActionContext(controllerContext: controllerContext);
+
+            var expected = HttpStatusCode.Unauthorized;
+
+            var target = new MyAuthorizationFilter() as IAuthorizationFilter;
+            var actual = target.ExecuteAuthorizationFilterAsync(actionContext, CancellationToken.None, () =>
+            {
+                return new TaskCompletionSource<HttpResponseMessage>().Task;
+            }).Result;
+
+            Assert.AreEqual(expected, actual.StatusCode);
         }
     }
 }
