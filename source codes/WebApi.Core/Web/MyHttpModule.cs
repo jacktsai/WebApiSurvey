@@ -27,13 +27,13 @@ namespace WebApi.Web
         private void HttpApplication_BeginRequest(object sender, EventArgs e)
         {
             var request = httpApp.Request;
-            Trace.WriteLine(string.Format("{0}", request.Url));
+            Trace.TraceInformation("MyHttpModule: {0}", request.Url);
 
             var context = new HttpContextWrapper(httpApp.Context);
             var routeData = RouteTable.Routes.GetRouteData(context);
             if (routeData != null && routeData.RouteHandler != null)
             {
-                Trace.WriteLine(string.Format("Url: {0}, Route Handler: {1}", request.Url, routeData.RouteHandler.GetType().FullName));
+                Trace.TraceInformation("MyHttpModule: Url: {0}, Route Handler: {1}", request.Url, routeData.RouteHandler.GetType().FullName);
             }
         }
 

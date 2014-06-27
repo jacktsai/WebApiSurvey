@@ -87,6 +87,8 @@
     <Compile Include="Web\Http\Tracing\MyTraceWriter.cs" />
     <Compile Include="Web\MyHttpHandler.cs" />
     <Compile Include="Web\MyHttpModule.cs" />
+    <Compile Include="Web\MyHttpRouteHandler.cs" />
+    <Compile Include="Web\Routing\MyUrlRoutingHandler.cs" />
     <Compile Include="Web\Routing\MyUrlRoutingModule.cs" />
   </ItemGroup>
   <ItemGroup>
